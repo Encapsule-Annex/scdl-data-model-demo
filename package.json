@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "scdl-data-model-demo",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Node.js app that demos data model sharing via npm and the onm package.",
   "main": "index.js",
   "scripts": {

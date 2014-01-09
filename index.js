@@ -1,6 +1,9 @@
 // scdl-data-model-demo/index.js
 // MIT by ChrisRus
 
+// For writing output.json to the local filesystem.
+var fs = require('fs');
+
 // onm allows us to share data models via npm.
 var onm = require('onm');
 
@@ -35,4 +38,13 @@ var createSubcomponents = function (address_, limit_, height_) {
 createSubcomponents(scdlModel.createRootAddress(), 256/*limit*/, 0/*initial height*/);
 
 // Serialize the test data to JSON and write to console.log.
-console.log(scdlStore.toJSON(undefined, 1));
+scdlStoreJSON = scdlStore.toJSON(undefined, 2);
+
+// Write the test data to file ./output.json
+var filename = "./output.json";
+fs.writeFile(filename, scdlStoreJSON, function (err) {
+    if (err) return console.error("Failed to write file '" + filename + "'. Error: '" + err + "'");
+    console.log(scdlStoreJSON);
+    console.log("Created new SCDL data file: '" + filename + "'");
+});
+
